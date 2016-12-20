@@ -53,6 +53,11 @@ SNESDev has to be run as background process with
 ```shell
 sudo ~/SNESDev-RPi/bin/SNESDev &
 ```
+SNESDev has to be run as background process with
+RetroPie 4.1 Use: 
+```shell
+sudo /usr/local/bin/SNESDev &
+```
 
 In order to access the uinput device SNESDev has to be run as root. This is (obviously) not so nice and is currently an issue. If you have a solution or suggestion for that, feel free to submit a pull request or send me a mail!
 
@@ -96,5 +101,35 @@ For comments, corrections, and suggestions visit https://github.com/petrockblog/
 
 Have fun!
 
+Note for later Builds:
+You may have to use:
+```shell
+sudo /usr/local/bin/SNESDev &
+```
+To run this in the background. Running this from SSH (Putty) should allow you to test. 
+
+SNESDev will not start automatically (even after selecting the option in the setup script. 
+Create a script:
+```shell
+sudo nano /yourscript.sh
+```
+Add the line 
+```shell
+sudo /usr/local/bin/SNESDev &
+```
+ctrl+x, yes
+
+Create a cron job:
+```shell
+sudo crontab -e
+```
+At the bottom of the file add:
+```shell
+@reboot sh /yourscript.sh
+```
 
 Raspberry Pi is a trademark of the Raspberry Pi Foundation.
+
+
+
+
